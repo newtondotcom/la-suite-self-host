@@ -1,0 +1,39 @@
+[submodule "docs"]
+	path = docs
+	url = https://github.com/suitenumerique/docs
+[submodule "messages"]
+	path = messages
+	url = https://github.com/suitenumerique/messages
+[submodule "meet"]
+	path = meet
+	url = https://github.com/suitenumerique/meet
+[submodule "drive"]
+	path = drive
+	url = https://github.com/suitenumerique/drive
+[submodule "people"]
+	path = people
+	url = https://github.com/suitenumerique/people
+[submodule "mosacloud/whisper-openai-api"]
+	path = mosacloud/whisper-openai-api
+	url = https://github.com/mosacloud/whisper-openai-api
+[submodule "mosacloud/jmap-mcp"]
+	path = mosacloud/jmap-mcp
+	url = https://github.com/mosacloud/jmap-mcp
+[submodule "mosacloud/django-lasuite"]
+	path = mosacloud/django-lasuite
+	url = https://github.com/mosacloud/django-lasuite
+[submodule "mosacloud/docspecio"]
+	path = mosacloud/docspecio
+	url = https://github.com/mosacloud/docspecio
+[submodule "mosacloud/docs"]
+	path = mosacloud/docs
+	url = https://github.com/mosacloud/docs
+[submodule "mosacloud/messages"]
+	path = mosacloud/messages
+	url = https://github.com/mosacloud/messages
+[submodule "mosacloud/drive"]
+	path = mosacloud/drive
+	url = https://github.com/mosacloud/drive
+[submodule "mosacloud/meet"]
+	path = mosacloud/meet
+	url = https://github.com/mosacloud/meet
