@@ -19,15 +19,15 @@ dependencies:
   # LaSuite Components
   - name: docs
     version: "4.5.0"
-    repository: "file://../docs/src/helm/impress"
+    repository: "file://../../docs/src/helm/impress"
     alias: docs
     condition: docs.enabled
     tags:
       - docs
 
   - name: drive
-    version: "0.11.1"
-    repository: "file://../drive/src/helm/drive"
+    version: "0.13.0"
+    repository: "file://../../drive/src/helm/drive"
     alias: drive
     condition: drive.enabled
     tags:
@@ -35,7 +35,7 @@ dependencies:
 
   - name: meet
     version: "0.0.15"
-    repository: "file://../meet/src/helm/meet"
+    repository: "file://../../meet/src/helm/meet"
     alias: meet
     condition: meet.enabled
     tags:
@@ -43,7 +43,7 @@ dependencies:
 
   - name: desk
     version: "0.0.7"
-    repository: "file://../people/src/helm/desk"
+    repository: "file://../../people/src/helm/desk"
     alias: people
     condition: people.enabled
     tags:
