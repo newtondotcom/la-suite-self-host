@@ -1,65 +1,65 @@
 name: Test Kind Cluster
 
 on:
-	pull_request:
-		paths:
-			- .github/workflows/test.yml
-			- .gitmodules
-			- mosacloud/src/helm/mosacloud/**
-			- mosacloud/drive/src/helm/drive/**
-			- mosacloud/meet/src/helm/meet/**
-			- mosacloud/docs/src/helm/impress/**
-	push:
-		branches:
-			- master
-		paths:
-			- .github/workflows/test.yml
-			- .gitmodules
-			- mosacloud/src/helm/mosacloud/**
-			- mosacloud/drive/src/helm/drive/**
-			- mosacloud/meet/src/helm/meet/**
-			- mosacloud/docs/src/helm/impress/**
+  pull_request:
+    paths:
+      - .github/workflows/test.yml
+      - .gitmodules
+      - mosacloud/src/helm/mosacloud/**
+      - mosacloud/drive/src/helm/drive/**
+      - mosacloud/meet/src/helm/meet/**
+      - mosacloud/docs/src/helm/impress/**
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/test.yml
+      - .gitmodules
+      - mosacloud/src/helm/mosacloud/**
+      - mosacloud/drive/src/helm/drive/**
+      - mosacloud/meet/src/helm/meet/**
+      - mosacloud/docs/src/helm/impress/**
 
 jobs:
-	kind-helm-test:
-		runs-on: ubuntu-latest
-		timeout-minutes: 25
+  kind-helm-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
 
-		steps:
-			- name: Checkout repository and submodules
-				uses: actions/checkout@v4
-				with:
-					submodules: recursive
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-			- name: Set up Helm
-				uses: azure/setup-helm@v4
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
 
-			- name: Create kind cluster
-				uses: helm/kind-action@v1.10.0
-				with:
-					cluster_name: lasuite-ci
-					wait: 120s
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.10.0
+        with:
+          cluster_name: lasuite-ci
+          wait: 120s
 
-			- name: Check cluster
-				run: |
-					kubectl cluster-info
-					kubectl get nodes
+      - name: Check cluster
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
 
-			- name: Build umbrella chart dependencies
-				working-directory: mosacloud/src/helm/mosacloud
-				run: helm dependency update .
+      - name: Build umbrella chart dependencies
+        working-directory: mosacloud/src/helm/mosacloud
+        run: helm dependency update .
 
-			- name: Lint umbrella chart
-				working-directory: mosacloud/src/helm/mosacloud
-				run: helm lint .
+      - name: Lint umbrella chart
+        working-directory: mosacloud/src/helm/mosacloud
+        run: helm lint .
 
-			- name: Render umbrella chart
-				working-directory: mosacloud/src/helm/mosacloud
-				run: helm template mosacloud . > /tmp/mosacloud-rendered.yaml
+      - name: Render umbrella chart
+        working-directory: mosacloud/src/helm/mosacloud
+        run: helm template mosacloud . > /tmp/mosacloud-rendered.yaml
 
-			- name: Install umbrella chart in kind
-				working-directory: mosacloud/src/helm/mosacloud
-				run: helm upgrade --install mosacloud . --namespace mosacloud --create-namespace
+      - name: Install umbrella chart in kind
+        working-directory: mosacloud/src/helm/mosacloud
+        run: helm upgrade --install mosacloud . --namespace mosacloud --create-namespace
 
-			- name: Show namespace resources
-				run: kubectl get all -n mosacloud
+      - name: Show namespace resources
+        run: kubectl get all -n mosacloud
