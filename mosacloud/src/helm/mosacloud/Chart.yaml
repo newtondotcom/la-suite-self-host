@@ -1,0 +1,23 @@
+apiVersion: v2
+name: mosacloud
+description: Umbrella chart for mosacloud applications
+type: application
+version: 0.1.0
+appVersion: "latest"
+
+dependencies:
+  - name: drive
+    version: 0.12.0
+    repository: "file://../../../drive/src/helm/drive"
+    condition: drive.enabled
+
+  - name: meet
+    version: 0.0.15
+    repository: "file://../../../meet/src/helm/meet"
+    condition: meet.enabled
+
+  - name: docs
+    alias: impress
+    version: 4.5.0
+    repository: "file://../../../docs/src/helm/impress"
+    condition: impress.enabled

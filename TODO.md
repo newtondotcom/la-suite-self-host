@@ -1,0 +1,1 @@
+Replace dynamically the assets and text and build images in CI to not have to fork the repo

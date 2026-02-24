@@ -1,18 +1,3 @@
-[submodule "docs"]
-	path = docs
-	url = https://github.com/suitenumerique/docs
-[submodule "messages"]
-	path = messages
-	url = https://github.com/suitenumerique/messages
-[submodule "meet"]
-	path = meet
-	url = https://github.com/suitenumerique/meet
-[submodule "drive"]
-	path = drive
-	url = https://github.com/suitenumerique/drive
-[submodule "people"]
-	path = people
-	url = https://github.com/suitenumerique/people
 [submodule "mosacloud/whisper-openai-api"]
 	path = mosacloud/whisper-openai-api
 	url = https://github.com/mosacloud/whisper-openai-api
